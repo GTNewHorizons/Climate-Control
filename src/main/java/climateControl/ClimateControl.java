@@ -20,6 +20,7 @@ import climateControl.api.ClimateControlSettings;
 import climateControl.api.DimensionalSettingsRegistry;
 import climateControl.biomeSettings.ArsMagicaPackage;
 import climateControl.biomeSettings.BopPackage;
+import climateControl.biomeSettings.EBPackage;
 import climateControl.biomeSettings.EBXLController;
 import climateControl.biomeSettings.ExternalBiomePackage;
 import climateControl.biomeSettings.GrowthcraftPackage;
@@ -267,6 +268,12 @@ public class ClimateControl {
             BiomePackageRegistry.instance.register(new BopPackage());
         } catch (java.lang.NoClassDefFoundError e) {
             // BoP isn't installed
+        }
+        try {
+            // see if EB is there
+            BiomePackageRegistry.instance.register(new EBPackage());
+        } catch (java.lang.NoClassDefFoundError e) {
+            // EB isn't installed
         }
         try {
             // see if thaumcraft is there

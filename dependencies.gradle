@@ -44,4 +44,5 @@ dependencies {
     compileOnly("curse.maven:thaumcraft-223628:2227552")
     compileOnly("curse.maven:undergroundbiomesconstructs-72744:2304497")
     compileOnly("curse.maven:vampirism-become-a-vampire-233029:2313875")
+    compileOnly(deobf("https://www.dropbox.com/s/v5qlzx1ldmxwfxe/Enhanced%20Biomes%202.5%20for%20MC%201.7.10.jar?dl=1", "Enhanced Biomes 2.5 for MC 1.7.10.jar"))
 }
