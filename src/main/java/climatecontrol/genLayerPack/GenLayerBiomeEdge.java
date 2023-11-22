@@ -5,8 +5,6 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerBiomeEdge extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000554";
-
     public GenLayerBiomeEdge(long p_i45475_1_, GenLayerPack p_i45475_3_) {
         super(p_i45475_1_);
         this.parent = p_i45475_3_;

@@ -12,7 +12,6 @@ import climatecontrol.utils.IntPad;
 
 public class GenLayerPrettyShore extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000568";
     private float maxChasm;
     private ClimateControlRules rules;
     private IntPad output = new IntPad();

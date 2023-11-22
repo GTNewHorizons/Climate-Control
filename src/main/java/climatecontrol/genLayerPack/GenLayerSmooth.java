@@ -6,7 +6,6 @@ import climatecontrol.utils.IntPad;
 
 public class GenLayerSmooth extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000569";
     private final IntPad output = new IntPad();
 
     public GenLayerSmooth(long par1, GenLayer par3GenLayer) {

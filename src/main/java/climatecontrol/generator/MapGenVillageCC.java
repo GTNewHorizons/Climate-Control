@@ -32,7 +32,6 @@ public class MapGenVillageCC extends MapGenVillage {
     long startTime;
     private long totalTime = 0;
     private int timesSinceReport = 0;
-    private static final String __OBFID = "CL_00000514";
 
     public MapGenVillageCC() {
         this.field_82665_g = 32;
@@ -119,7 +118,6 @@ public class MapGenVillageCC extends MapGenVillage {
          * well ... thats what it does
          */
         private boolean hasMoreThanTwoComponents;
-        private static final String __OBFID = "CL_00000515";
 
         public Start() {}
 

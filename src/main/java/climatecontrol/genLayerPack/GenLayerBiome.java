@@ -16,7 +16,6 @@ public class GenLayerBiome extends GenLayerPack {
     private BiomeGenBase[] field_151621_d;
     private BiomeGenBase[] field_151622_e;
     private BiomeGenBase[] field_151620_f;
-    private static final String __OBFID = "CL_00000555";
 
     public GenLayerBiome(long par1, GenLayer par3GenLayer, WorldType worldType)// , WorldType par4WorldType)
     {

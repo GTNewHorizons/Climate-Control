@@ -5,8 +5,6 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerDeepOcean extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000546";
-
     public GenLayerDeepOcean(long p_i45472_1_, GenLayerPack p_i45472_3_) {
         super(p_i45472_1_);
         this.parent = p_i45472_3_;

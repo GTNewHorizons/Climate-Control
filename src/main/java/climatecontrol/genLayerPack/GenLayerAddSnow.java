@@ -5,8 +5,6 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerAddSnow extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000553";
-
     public GenLayerAddSnow(long par1, GenLayer par3GenLayer) {
         super(par1);
         this.parent = par3GenLayer;

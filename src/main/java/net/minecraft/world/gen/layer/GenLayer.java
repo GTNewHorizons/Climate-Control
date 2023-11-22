@@ -29,7 +29,6 @@ public abstract class GenLayer {
      * base seed to the LCG prng provided via the constructor
      */
     protected long baseSeed;
-    private static final String __OBFID = "CL_00000559";
 
     /**
      * the first array item is a linked list of the bioms, the second is the zoom function, the third is the same as the
@@ -180,15 +179,11 @@ public abstract class GenLayer {
                     crashreportcategory.addCrashSection("Biome B ID", Integer.valueOf(p_151616_1_));
                     crashreportcategory.addCrashSectionCallable("Biome A", new Callable() {
 
-                        private static final String __OBFID = "CL_00000560";
-
                         public String call() {
                             return String.valueOf(BiomeGenBase.getBiome(p_151616_0_));
                         }
                     });
                     crashreportcategory.addCrashSectionCallable("Biome B", new Callable() {
-
-                        private static final String __OBFID = "CL_00000561";
 
                         public String call() {
                             return String.valueOf(BiomeGenBase.getBiome(p_151616_1_));

@@ -5,8 +5,6 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerRiverInit extends GenLayer {
 
-    private static final String __OBFID = "CL_00000565";
-
     public GenLayerRiverInit(long par1, GenLayer par3GenLayer) {
         super(par1);
         this.parent = par3GenLayer;

@@ -40,8 +40,6 @@ public class GenLayerSubBiome extends GenLayerPack {
         }
     };
 
-    private static final String __OBFID = "CL_00000563";
-
     public GenLayerSubBiome(long p_i45479_1_, GenLayer biomes, GenLayer rivers, SubBiomeChooser subBiomeChooser,
         BiomeSwapper mBiomes, boolean doBoP) {
         super(p_i45479_1_);

@@ -11,7 +11,6 @@ import climatecontrol.genLayerPack.GenLayerPack;
 
 public class GenLayerShoreCC extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000568";
     private final ClimateControlRules rules;
 
     public GenLayerShoreCC(long par1, GenLayer par3GenLayer, ClimateControlRules rules) {

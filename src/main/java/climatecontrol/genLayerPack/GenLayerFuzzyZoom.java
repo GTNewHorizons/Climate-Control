@@ -2,8 +2,6 @@ package climatecontrol.genLayerPack;
 
 public class GenLayerFuzzyZoom extends GenLayerZoom {
 
-    private static final String __OBFID = "CL_00000556";
-
     public GenLayerFuzzyZoom(long par1, GenLayerPack par3GenLayer) {
         super(par1, par3GenLayer);
     }

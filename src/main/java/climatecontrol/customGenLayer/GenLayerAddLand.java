@@ -14,7 +14,6 @@ import climatecontrol.utils.IntPad;
  */
 public class GenLayerAddLand extends GenLayerNeighborTesting {
 
-    private static final String __OBFID = "CL_00000551";
     private final boolean separate;
     private final GenLayer realParent;
     private IntPad output = new IntPad();

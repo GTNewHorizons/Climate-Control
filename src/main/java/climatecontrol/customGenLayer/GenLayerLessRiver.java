@@ -13,7 +13,6 @@ import climatecontrol.genLayerPack.GenLayerPack;
 
 public class GenLayerLessRiver extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000565";
     private final int percentageReduction;
 
     public GenLayerLessRiver(long par1, GenLayer par3GenLayer, int percentageReduction) {

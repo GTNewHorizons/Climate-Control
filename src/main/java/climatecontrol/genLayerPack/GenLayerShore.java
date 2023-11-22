@@ -7,8 +7,6 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerShore extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000568";
-
     public GenLayerShore(long par1, GenLayer par3GenLayer) {
         super(par1);
         this.parent = par3GenLayer;

@@ -13,8 +13,6 @@ import climatecontrol.genLayerPack.GenLayerPack;
  */
 public class GenLayerAddBiome extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000551";
-
     public GenLayerAddBiome(long par1, GenLayer par3GenLayer) {
         super(par1);
         this.parent = par3GenLayer;

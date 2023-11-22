@@ -7,7 +7,6 @@ import net.minecraft.world.gen.layer.IntCache;
 public class GenLayerHills extends GenLayerPack {
 
     private GenLayer field_151628_d;
-    private static final String __OBFID = "CL_00000563";
 
     public GenLayerHills(long p_i45479_1_, GenLayer p_i45479_3_, GenLayer p_i45479_4_) {
         super(p_i45479_1_);

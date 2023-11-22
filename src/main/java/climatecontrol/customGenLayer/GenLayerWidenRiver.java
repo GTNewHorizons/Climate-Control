@@ -16,7 +16,6 @@ import climatecontrol.utils.IntPad;
 
 public class GenLayerWidenRiver extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000566";
     private IntPad output = new IntPad();
 
     public GenLayerWidenRiver(long par1, GenLayer par3GenLayer) {

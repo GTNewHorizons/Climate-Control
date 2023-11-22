@@ -6,8 +6,6 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerAddMushroomIsland extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000552";
-
     public GenLayerAddMushroomIsland(long par1, GenLayer par3GenLayer) {
         super(par1);
         this.parent = par3GenLayer;

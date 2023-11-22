@@ -5,8 +5,6 @@ import net.minecraft.world.gen.layer.GenLayer;
 
 public class GenLayerRareBiome extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000562";
-
     public GenLayerRareBiome(long p_i45478_1_, GenLayer p_i45478_3_) {
         super(p_i45478_1_);
         this.parent = p_i45478_3_;// new GenLayerConfirm(p_i45478_3_);

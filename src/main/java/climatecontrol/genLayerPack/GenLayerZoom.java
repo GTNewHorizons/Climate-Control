@@ -4,7 +4,6 @@ import net.minecraft.world.gen.layer.GenLayer;
 
 public class GenLayerZoom extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000572";
     private boolean biomesOnly = false;
     private int[] scratchpad = new int[7 * 7];
     private int[] resultpad = new int[7 * 7];

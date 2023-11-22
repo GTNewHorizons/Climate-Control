@@ -8,8 +8,6 @@ import climatecontrol.genLayerPack.GenLayerPack;
 
 public class GenLayerZoomBiome extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000572";
-
     public GenLayerZoomBiome(long par1, GenLayer par3GenLayer) {
         super(par1);
         super.parent = par3GenLayer;

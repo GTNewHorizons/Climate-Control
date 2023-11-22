@@ -7,7 +7,6 @@ import climatecontrol.utils.IntPad;
 
 public class GenLayerRiver extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000566";
     public static final int noRiver = -1;
     private IntPad output = new IntPad();
 

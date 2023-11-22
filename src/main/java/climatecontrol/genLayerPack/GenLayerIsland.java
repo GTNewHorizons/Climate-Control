@@ -4,7 +4,6 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerIsland extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000558";
     private final int squaresPerLand;
 
     public GenLayerIsland(long par1, int squaresPerLand) {

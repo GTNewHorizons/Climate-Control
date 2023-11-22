@@ -11,8 +11,6 @@ import climatecontrol.genLayerPack.GenLayerPack;
 
 public class GenLayerSmoothZoom extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000572";
-
     public GenLayerSmoothZoom(long par1, GenLayer par3GenLayer) {
         super(par1);
         super.parent = par3GenLayer;

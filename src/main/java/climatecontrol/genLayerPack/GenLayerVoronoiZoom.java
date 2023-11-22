@@ -5,8 +5,6 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerVoronoiZoom extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000571";
-
     public GenLayerVoronoiZoom(long par1, GenLayer par3GenLayer) {
         super(par1);
         super.parent = par3GenLayer;

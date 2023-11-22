@@ -14,7 +14,6 @@ public class GenLayerSmoothCoast extends GenLayerPack {
 
     public static Logger logger = new Zeno410Logger("SmoothCoast").logger();
 
-    private static final String __OBFID = "CL_00000569";
     private static int sinkLand = 7;
     private static int raiseWater = 10;
     private IntPad output = new IntPad();

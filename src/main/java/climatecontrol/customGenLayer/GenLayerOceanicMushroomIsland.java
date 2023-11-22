@@ -13,7 +13,6 @@ import climatecontrol.genLayerPack.GenLayerPack;
  */
 public class GenLayerOceanicMushroomIsland extends GenLayerPack {
 
-    private static final String __OBFID = "CL_00000552";
     private final int incidence;
 
     public GenLayerOceanicMushroomIsland(long par1, GenLayer par3GenLayer, int incidence) {
