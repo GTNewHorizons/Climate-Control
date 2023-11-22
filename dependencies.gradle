@@ -34,14 +34,14 @@
  * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
 dependencies {
-    compileOnly("curse.maven:ars-magica-2-67313:2280862") {transitive = false}
-    compileOnly("curse.maven:biomes-o-plenty-220318:2499612") {transitive = false}
-    compileOnly("curse.maven:chromaticraft-235590:4721192") {transitive = false}
-    compileOnly("curse.maven:extrabiomesxl-60041:2273301") {transitive = false}
-    compileOnly("curse.maven:growthcraft-community-edition-235092:4464624") {transitive = false}
-    compileOnly("curse.maven:highlands-221226:2227924") {transitive = false}
-    compileOnly("curse.maven:mystcraft-224599:2417042") {transitive = false}
-    compileOnly("curse.maven:thaumcraft-223628:2227552") {transitive = false}
-    compileOnly("curse.maven:undergroundbiomesconstructs-72744:2304497") {transitive = false}
-    compileOnly("curse.maven:vampirism-become-a-vampire-233029:2313875") {transitive = false}
+    compileOnly("curse.maven:ars-magica-2-67313:2280862")
+    compileOnly("curse.maven:biomes-o-plenty-220318:2499612")
+    compileOnly("curse.maven:chromaticraft-235590:4721192")
+    compileOnly("curse.maven:extrabiomesxl-60041:2273301")
+    compileOnly("curse.maven:growthcraft-community-edition-235092:4464624")
+    compileOnly("curse.maven:highlands-221226:2227924")
+    compileOnly("curse.maven:mystcraft-224599:2417042")
+    compileOnly("curse.maven:thaumcraft-223628:2227552")
+    compileOnly("curse.maven:undergroundbiomesconstructs-72744:2304497")
+    compileOnly("curse.maven:vampirism-become-a-vampire-233029:2313875")
 }
