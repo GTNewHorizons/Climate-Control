@@ -79,7 +79,7 @@ public class DimensionManager {
             return;
         }
         this.configDirectory = server.getFile("config");
-        this.suggestedConfigFile = new File(configDirectory, "climateControl.cfg");
+        this.suggestedConfigFile = new File(configDirectory, "climatecontrol.cfg");
     }
 
     private GenLayerRiverMix patchedGenLayer(ClimateControlSettings settings, WorldType worldType, long worldSeed) {
