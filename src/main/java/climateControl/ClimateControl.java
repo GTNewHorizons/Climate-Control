@@ -74,7 +74,7 @@ public class ClimateControl {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        addonConfigManager = new TaggedConfigManager("climateControl.cfg", "ClimateControl");
+        addonConfigManager = new TaggedConfigManager("climatecontrol.cfg", "ClimateControl");
         BiomePackageRegistry.instance = new BiomePackageRegistry(
             event.getSuggestedConfigurationFile()
                 .getParentFile(),
