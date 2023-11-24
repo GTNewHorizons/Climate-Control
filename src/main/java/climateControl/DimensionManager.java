@@ -147,7 +147,7 @@ public class DimensionManager {
     private final File suggestedConfigFile;
     private final File configDirectory;
 
-    private TaggedConfigManager addonConfigManager = new TaggedConfigManager("climateControl.cfg", "ClimateControl");
+    private TaggedConfigManager addonConfigManager = new TaggedConfigManager("climatecontrol.cfg", "ClimateControl");
 
     private ClimateControlSettings defaultSettings(MinecraftFilesAccess dimension, boolean newWorld) {
         ClimateControlSettings result = defaultSettings(newWorld);
