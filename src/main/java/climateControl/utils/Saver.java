@@ -22,13 +22,9 @@ public class Saver<Type extends SelfTrackable<Type>> {
     // private final Maker<Type> maker;
     public static Logger logger = new Zeno410Logger("Saver").logger();
     private final Streamer<Type> streamer;
-    private Accessor<MapStorage, HashMap> mapAccess = new Accessor<MapStorage, HashMap>(
-        "field_75749_b",
-        "loadedDataMap");
+    private Accessor<MapStorage, HashMap> mapAccess = new Accessor<MapStorage, HashMap>("field_75749_b", "loadedDataMap");
     private Accessor<MapStorage, List> listAccess = new Accessor<MapStorage, List>("field_75750_c", "loadedDataList");
-    private Accessor<MapStorage, ISaveHandler> handlerAccess = new Accessor<MapStorage, ISaveHandler>(
-        "field_75751_a",
-        "saveHandler");
+    private Accessor<MapStorage, ISaveHandler> handlerAccess = new Accessor<MapStorage, ISaveHandler>("field_75751_a", "saveHandler");
 
     public Saver(Streamer<Type> streamer) {
         this.streamer = streamer;

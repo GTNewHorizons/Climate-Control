@@ -2,7 +2,6 @@
 package climateControl.customGenLayer;
 
 import net.minecraft.world.gen.layer.GenLayer;
-import net.minecraft.world.gen.layer.IntCache;
 
 import climateControl.genLayerPack.GenLayerPack;
 
@@ -28,7 +27,7 @@ public class GenLayerAddBiome extends GenLayerPack {
         int k1 = par3 + 2;
         int l1 = par4 + 2;
         int[] aint = this.parent.getInts(i1, j1, k1, l1);
-        int[] aint1 = IntCache.getIntCache(par3 * par4);
+        int[] aint1 = new int[(par3 * par4)];
         taste(aint, k1 * l1);
         poison(aint1, par3 * par4);
 

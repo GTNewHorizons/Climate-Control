@@ -56,7 +56,7 @@ public class GenLayerBreakMergers extends GenLayerPack {
     }
 
     boolean tooDifferent(int compare, int result) {
-        if (!isOceanic(compare) && !isOceanic(result) && ((compare < result - 2) || (compare > result + 2)))
+        if (!isOceanic(compare) && !isOceanic(result) && ((compare < result - 3) || (compare > result + 3)))
             return true;
         return false;
     }

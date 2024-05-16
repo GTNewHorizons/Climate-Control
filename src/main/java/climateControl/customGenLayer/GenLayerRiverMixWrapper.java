@@ -24,8 +24,7 @@ public class GenLayerRiverMixWrapper extends GenLayerRiverMix {
     private GenLayer voronoi;
     private LockableRiverMix original;
     private Accessor<GenLayerRiverMix, GenLayer> riverMixBiome = new Accessor<GenLayerRiverMix, GenLayer>(
-        "field_75910_b",
-        "biomePatternGeneratorChain");
+         "field_75910_b", "biomePatternGeneratorChain");
 
     private LockGenLayers biomeLocker = new LockGenLayers();
 
@@ -73,7 +72,7 @@ public class GenLayerRiverMixWrapper extends GenLayerRiverMix {
     }
 
     @Override
-    public synchronized int[] getInts(int arg0, int arg1, int arg2, int arg3) {
+    public int[] getInts(int arg0, int arg1, int arg2, int arg3) {
         // logger.info("generating ");
         return redirect.generator.getInts(arg0, arg1, arg2, arg3);
     }

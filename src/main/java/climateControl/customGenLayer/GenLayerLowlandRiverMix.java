@@ -66,7 +66,8 @@ public class GenLayerLowlandRiverMix extends GenLayerRiverMix {
             if (aint[i] < 0) throw new RuntimeException(biomePatternGeneratorChain.toString());
         }
         for (int i1 = 0; i1 < par3 * par4; ++i1) {
-            if (aint[i1] != BiomeGenBase.ocean.biomeID && aint[i1] != BiomeGenBase.deepOcean.biomeID) {
+            if (aint[i1] != BiomeGenBase.ocean.biomeID && aint[i1] != BiomeGenBase.deepOcean.biomeID
+                && aint[i1] != BiomeGenBase.frozenOcean.biomeID) {
                 if (aint1[i1] == BiomeGenBase.river.biomeID) {
                     int biomeID = aint[i1];
                     if (biomeID > 255) throw new RuntimeException();

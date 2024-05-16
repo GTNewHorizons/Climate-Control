@@ -1,17 +1,14 @@
 package climateControl.customGenLayer;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.logging.Logger;
 
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
-import net.minecraft.world.gen.layer.IntCache;
 
 import climateControl.ClimateControl;
 import climateControl.api.ClimateControlSettings;
 import climateControl.genLayerPack.GenLayerPack;
-import climateControl.utils.IntPad;
 import climateControl.utils.Numbered;
 import climateControl.utils.PlaneLocation;
 import climateControl.utils.Zeno410Logger;
@@ -29,7 +26,6 @@ public class GenLayerIdentifiedClimate extends GenLayerPack {
     private final int warmLevel;
     private final int coldLevel;
     private final int totalLevel;
-    private final IntPad output = new IntPad();
     public static Logger logger = new Zeno410Logger("IdentifiedClimate").logger();
 
     private GenLayerIdentifiedClimate(long par1, GenLayer par3GenLayer, int hot, int warm, int cold, int snow) {
@@ -53,7 +49,7 @@ public class GenLayerIdentifiedClimate extends GenLayerPack {
 
     public int[] getInts(int x0, int z0, int xSize, int zSize) {
         // note parent layer is increased by 2 due to the need
-        ArrayList<ExtremeTemp> changes = new ArrayList<ExtremeTemp>();
+        // ArrayList<ExtremeTemp> changes = new ArrayList<ExtremeTemp>();
         Prioritizer prioritizer = new Prioritizer();
         int parentX0 = x0 - 2;
         int parentZ0 = z0 - 2;
@@ -62,8 +58,7 @@ public class GenLayerIdentifiedClimate extends GenLayerPack {
         int[] parentVals;
         int[] parentIds = this.parent.getInts(parentX0, parentZ0, parentXSize, parentZSize);
         parentVals = this.getRawClimates(parentIds, parentX0, parentZ0, parentXSize, parentZSize);
-        int[] vals = output.pad(xSize * zSize);
-        poison(vals, xSize * zSize);
+        int[] vals = new int[xSize * zSize];
 
         // we cover the entire parental layer, as parental changes can feed back to up to 2 away
         for (int parentZ = 0; parentZ < parentZSize; parentZ++) {
@@ -82,9 +77,9 @@ public class GenLayerIdentifiedClimate extends GenLayerPack {
                 this.initChunkSeed((long) (parentX + parentX0), (long) (parentZ + parentZ0));
 
                 if (k2 == 1) {
-                    changes.add(new Hot(prioritizer, parentX, parentZ));
+                    // changes.add(new Hot(prioritizer,parentX,parentZ));
                 } else if (k2 == 4) {
-                    changes.add(new Cold(prioritizer, parentX, parentZ));
+                    // changes.add(new Cold(prioritizer,parentX,parentZ));
                 }
             }
         }
@@ -106,14 +101,12 @@ public class GenLayerIdentifiedClimate extends GenLayerPack {
          */
         // now we add on 4*identifier for original values above 255. These are landmass IDs.
         for (int parentZ = 2; parentZ < parentZSize - 2; parentZ++) {
-            for (int parentX = 2; parentX < parentXSize - 2; ++parentX) {
+            for (int parentX = 2; parentX < parentXSize - 2; parentX++) {
                 int k2 = parentIds[parentX + (parentZ) * parentXSize];
                 if (k2 < 256) continue;
                 vals[parentX - 2 + (parentZ - 2) * xSize] += k2 * 4;
             }
         }
-
-        taste(vals, xSize * zSize);
         return vals;
     }
 
@@ -215,7 +208,10 @@ public class GenLayerIdentifiedClimate extends GenLayerPack {
             number = nextInt(1000000000);
             if (!numbers.contains(number)) {
                 numbers.add(number);
-            } else duplicate = true;
+            } else {
+                duplicate = true;
+                throw new RuntimeException();
+            }
             return number;
         }
     }
@@ -253,7 +249,7 @@ public class GenLayerIdentifiedClimate extends GenLayerPack {
     }
 
     private int[] getRawClimates(int[] parent, int par1, int par2, int par3, int par4) {
-        int[] aint1 = IntCache.getIntCache(par3 * par4);
+        int[] aint1 = new int[(par3 * par4)];
 
         for (int i2 = 0; i2 < par4; ++i2) {
             for (int j2 = 0; j2 < par3; ++j2) {

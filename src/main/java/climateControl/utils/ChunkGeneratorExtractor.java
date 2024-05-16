@@ -21,12 +21,10 @@ public class ChunkGeneratorExtractor {
     private AccessChunkProviderServer accessChunkProviderServer = new AccessChunkProviderServer();
 
     private Accessor<ChunkProviderServer, IChunkProvider> providerFromChunkServer = new Accessor<ChunkProviderServer, IChunkProvider>(
-        "field_73246_d",
-        "serverChunkGenerator");
+        "field_73246_d", "serverChunkGenerator");
 
     private Accessor<ChunkProviderGenerate, MapGenVillage> villageGeneratorFromVillage = new Accessor<ChunkProviderGenerate, MapGenVillage>(
-        "field_73224_v",
-        "villageGenerator");
+        "field_73224_v", "villageGenerator");
 
     public IChunkProvider extractFrom(WorldServer world) {
         ChunkProviderServer server = accessChunkProviderServer.chunkProviderServer(world);

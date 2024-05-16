@@ -1,6 +1,8 @@
 
 package climateControl.utils;
 
+import net.minecraft.launchwrapper.Launch;
+
 import java.lang.reflect.Field;
 
 /**
@@ -12,8 +14,14 @@ public class AccessLong<ObjectType> {
     private Field field;
     private final String fieldName;
 
-    public AccessLong(String _fieldName) {
+    static final boolean isDevEnv = (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
+
+    private AccessLong(String _fieldName) {
         fieldName = _fieldName;
+    }
+
+    public AccessLong(String _fieldName, String _deobfName) {
+        this(isDevEnv ? _deobfName : _fieldName);
     }
 
     private Field field(ObjectType example) {

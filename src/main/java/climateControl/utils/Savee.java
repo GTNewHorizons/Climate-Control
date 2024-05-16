@@ -37,17 +37,12 @@ public abstract class Savee<Type extends SelfTrackable<Type>> extends WorldSaved
         }
     };
 
-    private static Accessor<MapStorage, ISaveHandler> saveHandlerAccess = new Accessor<MapStorage, ISaveHandler>(
-        "field_75751_a",
-        "saveHandler");
+    private static Accessor<MapStorage, ISaveHandler> saveHandlerAccess = new Accessor<>(
+            "field_75751_a", "saveHandler");
 
-    private static Accessor<MapStorage, Map> loadedMapAccess = new Accessor<MapStorage, Map>(
-        "field_75749_b",
-        "loadedDataMap");
+    private static Accessor<MapStorage, Map> loadedMapAccess = new Accessor<>("field_75749_b", "loadedDataMap");
 
-    private static Accessor<MapStorage, List> loadedListAccess = new Accessor<MapStorage, List>(
-        "field_75750_c",
-        "loadedDataList");
+    private static Accessor<MapStorage, List> loadedListAccess = new Accessor<>("field_75750_c", "loadedDataList");
 
     public void loadData(String saveName, Savee<Type> worldsaveddata, World world, Maker<Type> maker) {
         final ISaveHandler saveHandler = saveHandlerAccess.get(world.mapStorage);

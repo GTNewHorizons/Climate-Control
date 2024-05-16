@@ -14,7 +14,6 @@ import climateControl.api.ClimateControlSettings;
 import climateControl.api.IslandClimateMaker;
 import climateControl.customGenLayer.ConfirmBiome;
 import climateControl.customGenLayer.GenLayerAddBiome;
-import climateControl.customGenLayer.GenLayerAddLand;
 import climateControl.customGenLayer.GenLayerAdjustIsland;
 import climateControl.customGenLayer.GenLayerBandedClimate;
 import climateControl.customGenLayer.GenLayerBiomeByTaggedClimate;
@@ -107,55 +106,69 @@ public class CorrectedContinentsGenerator extends AbstractWorldGenerator {
             emptyOcean,
             settings().largeContinentFrequency.value(),
             this.landmassIdentifier(),
-            settings().separateLandmasses.value(),
+            separating(),
             "Large Continent");
         GenLayerPack genlayeraddisland = growRound(genlayerisland, 2L, 3L, climatesAssigned);
+        if (separating()) {
+            genlayeraddisland = new GenLayerBreakMergers(2L + 1000, genlayeraddisland);
+        }
+        if (settings().testingMode.value()) {
+            genlayeraddisland = new GenLayerConfirm(genlayeraddisland);
+            genlayeraddisland = this.reportOn(genlayeraddisland, "large.txt");
+        }
 
         genlayeraddisland = new GenLayerFuzzyZoom(2000L, genlayeraddisland);
         genlayeraddisland = new GenLayerSmooth(2004L, genlayeraddisland);
+
         GenLayerPack mediumContinents = new GenLayerOceanicIslands(
             4L,
             genlayeraddisland,
             settings().mediumContinentFrequency.value(),
             this.landmassIdentifier(),
-            settings().separateLandmasses.value(),
+            separating(),
             "Medium Continent");
 
         genlayeraddisland = growRound(mediumContinents, 5L, 7L, climatesAssigned);
-        if (settings().separateLandmasses.value()) {
+        if (separating()) {
             genlayeraddisland = new GenLayerBreakMergers(5L + 1000, genlayeraddisland);
+        }
+        if (settings().testingMode.value()) {
+            genlayeraddisland = new GenLayerConfirm(genlayeraddisland);
+            genlayeraddisland = this.reportOn(genlayeraddisland, "medium.txt");
         }
         GenLayer genlayerzoom = new GenLayerFuzzyZoom(2001L, genlayeraddisland);
         genlayerzoom = new GenLayerSmooth(2008l, genlayerzoom);
-        if (settings().separateLandmasses.value()) {
-            genlayeraddisland = new GenLayerBreakMergers(5L + 1000, genlayeraddisland);
-        }
         GenLayerPack smallContinents = new GenLayerOceanicIslands(
             8L,
             genlayerzoom,
             settings().smallContinentFrequency.value(),
             this.landmassIdentifier(),
-            settings().separateLandmasses.value(),
+            separating(),
             "Small Continent");
+        if (settings().testingMode.value()) {
+            smallContinents = new GenLayerConfirm(smallContinents);
+            smallContinents = this.reportOn(smallContinents, "forcedbefore.txt");
+        }
         if (settings().forceStartContinent.value()) {
-            smallContinents = new GenLayerForceStartLand(smallContinents);
+            smallContinents = new GenLayerForceStartLand(smallContinents, islandClimates(2));
+        }
+        if (settings().testingMode.value()) {
+            smallContinents = new GenLayerConfirm(smallContinents);
+            smallContinents = this.reportOn(smallContinents, "forcedafter.txt");
         }
         genlayeraddisland = growRound(smallContinents, 2L, 3L, climatesAssigned);
         if (settings().doFull()) {
-            // genlayeraddisland = new GenLayerDefineClimate(10L, genlayeraddisland,settings());
-            // genlayeraddisland = new GenLayerSmoothClimate(1010L,genlayeraddisland);
             genlayeraddisland = climateLayer(1014L, genlayeraddisland, settings());
             climatesAssigned = true;
         }
 
         if (settings().testingMode.value()) {
             genlayeraddisland = new GenLayerConfirm(genlayeraddisland);
-            // genlayeraddisland = this.reportOn(genlayeraddisland, "smoothed.txt");
+            genlayeraddisland = this.reportOn(genlayeraddisland, "smallGrown.txt");
         }
-
         genlayeraddisland = new GenLayerZoom(2002L, genlayeraddisland);
-        genlayeraddisland = new GenLayerSmooth(2012L, genlayeraddisland);
-        if (settings().separateLandmasses.value()) {
+        // genlayeraddisland = new GenLayerSmooth(2012L,genlayeraddisland);
+        if (separating()) {
             genlayeraddisland = new GenLayerBreakMergers(2012L + 1000, genlayeraddisland);
         }
         if (climatesAssigned) {
@@ -179,9 +192,6 @@ public class CorrectedContinentsGenerator extends AbstractWorldGenerator {
         }
         // add land without merging if separating and just add otherwise
         genlayeraddisland = growRound(genlayeraddisland, 13L, 15L, climatesAssigned);
-        if (settings().separateLandmasses.value()) {
-            genlayeraddisland = new GenLayerBreakMergers(13L + 1000, genlayeraddisland);
-        }
         if (settings().testingMode.value()) {
             genlayeraddisland = this.reportOn(genlayeraddisland, "largeIslands.txt");
         }
@@ -193,11 +203,11 @@ public class CorrectedContinentsGenerator extends AbstractWorldGenerator {
         }
         if (settings().testingMode.value()) {
             genlayeraddisland = new GenLayerConfirm(genlayeraddisland);
-            // genlayeraddisland = this.reportOn(genlayeraddisland, "smoothed.txt");
+            genlayeraddisland = this.reportOn(genlayeraddisland, "smoothed.txt");
         }
         genlayeraddisland = new GenLayerZoom(2003L, genlayeraddisland);
-        genlayeraddisland = new GenLayerSmooth(2017L, genlayeraddisland);
-        if (settings().separateLandmasses.value()) {
+        // genlayeraddisland = new GenLayerSmooth(2017L,genlayeraddisland);
+        if (separating()) {
             genlayeraddisland = new GenLayerBreakMergers(2017L + 1000, genlayeraddisland);
         }
         if (climatesAssigned) {
@@ -220,13 +230,7 @@ public class CorrectedContinentsGenerator extends AbstractWorldGenerator {
                 "Medium Island");
         }
         // genlayeraddisland = new GenLayerAddLand(19L, genlayeraddisland);
-        genlayeraddisland = new GenLayerAdjustIsland(
-            21L,
-            genlayeraddisland,
-            1,
-            12,
-            12,
-            settings().separateLandmasses.value() || climatesAssigned);
+        genlayeraddisland = new GenLayerAdjustIsland(21L, genlayeraddisland, 3, 12, 12, false);
         if (settings().quarterSize.value()) {
             // genlayeraddisland = new GenLayerDefineClimate(20L, genlayeraddisland,settings());
             // genlayeraddisland = new GenLayerSmoothClimate(1014L,genlayeraddisland);
@@ -234,6 +238,9 @@ public class CorrectedContinentsGenerator extends AbstractWorldGenerator {
             climatesAssigned = true;
         }
         genlayeraddisland = new GenLayerSmoothClimate(22L, genlayeraddisland);
+        if (separating()) {
+            genlayeraddisland = new GenLayerBreakMergers(2017L + 1000, genlayeraddisland);
+        }
         if (settings().testingMode.value()) {
             genlayeraddisland = this.reportOn(genlayeraddisland, "mediumIslands.txt");
         }
@@ -260,27 +267,33 @@ public class CorrectedContinentsGenerator extends AbstractWorldGenerator {
         return this.vanillaExpansion(worldSeed, worldType, genlayer3, settings());
     }
 
+    private final boolean separating() {
+        return settings().separateLandmasses.value();
+    }
+
     private GenLayerPack growRound(GenLayerPack genlayeraddisland, long firstSeed, long secondSeed,
         boolean climatesAssigned) {
         // add land without merging if separating and just add otherwise
-        if (settings().separateLandmasses.value() || climatesAssigned) {
-            genlayeraddisland = new GenLayerAddLand(firstSeed, genlayeraddisland, true);
-            genlayeraddisland = new GenLayerBreakMergers(firstSeed + 1000, genlayeraddisland);
-            genlayeraddisland = new GenLayerAdjustIsland(secondSeed, genlayeraddisland, 3, 11, 12, true);
-            genlayeraddisland = new GenLayerBreakMergers(secondSeed + 1000, genlayeraddisland);
+        if (settings().separateLandmasses.value()) {
+            for (int round = 0; round < settings().landExpansionRounds.value(); round++) {
+                // make the seeds change
+                int adjust = (round) * 50;
+                // genlayeraddisland = new GenLayerAddLand(firstSeed + adjust, genlayeraddisland,true);
+                genlayeraddisland = new GenLayerAdjustIsland(firstSeed + adjust, genlayeraddisland, 3, 11, 12, false);
+                genlayeraddisland = new GenLayerBreakMergers(firstSeed + adjust + 1000, genlayeraddisland);
+                genlayeraddisland = new GenLayerAdjustIsland(secondSeed + adjust, genlayeraddisland, 3, 11, 12, false);
+                genlayeraddisland = new GenLayerBreakMergers(secondSeed + adjust + 1000, genlayeraddisland);
+                if (settings().testingMode.value()) {
+                    genlayeraddisland = new GenLayerConfirm(genlayeraddisland);
+                    // genlayeraddisland = this.reportOn(genlayeraddisland, "smoothed.txt");
+                }
+            }
         } else {
-            genlayeraddisland = new GenLayerAddLand(firstSeed, genlayeraddisland, climatesAssigned);
-            genlayeraddisland = new GenLayerAdjustIsland(secondSeed, genlayeraddisland, 3, 11, 12, climatesAssigned);
-        }
-        return genlayeraddisland;
-    }
+            // genlayeraddisland = new GenLayerAddLand(firstSeed, genlayeraddisland,climatesAssigned);
 
-    private GenLayerPack separatedGrowth(GenLayerPack genlayeraddisland, long secondSeed, boolean climatesAssigned) {
-        // add land without merging if separating and just add otherwise
-        genlayeraddisland = new GenLayerAddLand(secondSeed, genlayeraddisland, true);
-        genlayeraddisland = new GenLayerBreakMergers(secondSeed + 1000, genlayeraddisland);
-        genlayeraddisland = new GenLayerAdjustIsland(secondSeed + 2000, genlayeraddisland, 3, 11, 12, true);
-        genlayeraddisland = new GenLayerBreakMergers(secondSeed + 3000, genlayeraddisland);
+            genlayeraddisland = new GenLayerAdjustIsland(firstSeed, genlayeraddisland, 3, 11, 12, false);
+            genlayeraddisland = new GenLayerAdjustIsland(secondSeed, genlayeraddisland, 3, 11, 12, false);
+        }
         return genlayeraddisland;
     }
 
@@ -408,11 +421,21 @@ public class CorrectedContinentsGenerator extends AbstractWorldGenerator {
             }
             if (settings.wideBeaches.value()) {
                 if (j == 0) {
-                    object = new GenLayerPrettyShore(1000L, (GenLayer) object, 1.0F, rules());
+                    object = new GenLayerPrettyShore(
+                        1000L,
+                        (GenLayer) object,
+                        1.0F,
+                        rules(),
+                        settings().mesaMesaBorders.value());
                 }
             } else {
                 if (j == 1) {
-                    object = new GenLayerPrettyShore(1000L, (GenLayer) object, 1.0F, rules());
+                    object = new GenLayerPrettyShore(
+                        1000L,
+                        (GenLayer) object,
+                        1.0F,
+                        rules(),
+                        settings().mesaMesaBorders.value());
                 }
             }
         }

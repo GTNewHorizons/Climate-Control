@@ -117,6 +117,7 @@ public class GenLayerEdge extends GenLayerPack {
     static final class SwitchMode {
 
         static final int[] field_151642_a = new int[GenLayerEdge.Mode.values().length];
+
         static {
             try {
                 field_151642_a[GenLayerEdge.Mode.COOL_WARM.ordinal()] = 1;
@@ -139,7 +140,6 @@ public class GenLayerEdge extends GenLayerPack {
     }
 
     public static enum Mode {
-
         COOL_WARM,
         HEAT_ICE,
         SPECIAL;
