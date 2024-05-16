@@ -1,9 +1,9 @@
 package climateControl.utils;
 
-import net.minecraft.launchwrapper.Launch;
-
 import java.lang.reflect.Field;
 import java.util.logging.Logger;
+
+import net.minecraft.launchwrapper.Launch;
 
 /**
  *
@@ -16,11 +16,9 @@ public class Accessor<ObjectType, FieldType> {
     private final String fieldName;
     static final boolean isDevEnv = (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
 
-    public Accessor(String _fieldName, String _deobfName){
-        if (isDevEnv)
-            fieldName = _deobfName;
-        else
-            fieldName = _fieldName;
+    public Accessor(String _fieldName, String _deobfName) {
+        if (isDevEnv) fieldName = _deobfName;
+        else fieldName = _fieldName;
     }
 
     private Field field(ObjectType example) {

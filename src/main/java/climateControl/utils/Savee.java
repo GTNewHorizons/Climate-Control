@@ -38,7 +38,8 @@ public abstract class Savee<Type extends SelfTrackable<Type>> extends WorldSaved
     };
 
     private static Accessor<MapStorage, ISaveHandler> saveHandlerAccess = new Accessor<>(
-            "field_75751_a", "saveHandler");
+        "field_75751_a",
+        "saveHandler");
 
     private static Accessor<MapStorage, Map> loadedMapAccess = new Accessor<>("field_75749_b", "loadedDataMap");
 

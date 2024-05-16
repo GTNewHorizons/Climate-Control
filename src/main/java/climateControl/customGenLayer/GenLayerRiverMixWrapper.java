@@ -24,7 +24,8 @@ public class GenLayerRiverMixWrapper extends GenLayerRiverMix {
     private GenLayer voronoi;
     private LockableRiverMix original;
     private Accessor<GenLayerRiverMix, GenLayer> riverMixBiome = new Accessor<GenLayerRiverMix, GenLayer>(
-         "field_75910_b", "biomePatternGeneratorChain");
+        "field_75910_b",
+        "biomePatternGeneratorChain");
 
     private LockGenLayers biomeLocker = new LockGenLayers();
 

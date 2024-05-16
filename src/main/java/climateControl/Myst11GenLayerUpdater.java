@@ -22,16 +22,20 @@ import climateControl.utils.Accessor;
 public class Myst11GenLayerUpdater {
 
     private Accessor<WorldProviderMyst, AgeController> ageControllerAccess = new Accessor<WorldProviderMyst, AgeController>(
-        "controller", "controller");
+        "controller",
+        "controller");
 
     private Accessor<AgeController, IBiomeController> biomeControllerAccess = new Accessor<AgeController, IBiomeController>(
-        "biomeController", "biomeController");
+        "biomeController",
+        "biomeController");
 
     private Accessor<SymbolBiomeControllerNative, GenLayer> genLayerAccess = new Accessor<SymbolBiomeControllerNative, GenLayer>(
-        "genBiomes", "genBiomes");
+        "genBiomes",
+        "genBiomes");
 
     private Accessor<SymbolBiomeControllerNative, GenLayer> biomeIndexAccess = new Accessor<SymbolBiomeControllerNative, GenLayer>(
-        "biomeIndexLayer", "biomeIndexLayer");
+        "biomeIndexLayer",
+        "biomeIndexLayer");
 
     public void update(GenLayerRiverMixWrapper riverMix, WorldProvider provider) {
         if (provider instanceof WorldProviderMyst) {

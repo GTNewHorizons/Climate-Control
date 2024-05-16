@@ -1,9 +1,9 @@
 
 package climateControl.utils;
 
-import net.minecraft.launchwrapper.Launch;
-
 import java.lang.reflect.Field;
+
+import net.minecraft.launchwrapper.Launch;
 
 /**
  *
