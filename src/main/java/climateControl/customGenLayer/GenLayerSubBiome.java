@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 
+import climateControl.biomeSettings.BiomeReplacer;
+import climateControl.biomeSettings.BoPSubBiomeReplacer;
 import climateControl.genLayerPack.GenLayerPack;
 import climateControl.generator.BiomeSwapper;
 import climateControl.generator.SubBiomeChooser;
@@ -23,6 +25,7 @@ public class GenLayerSubBiome extends GenLayerPack {
     private GenLayer rivers;
     private final SubBiomeChooser subBiomeChooser;
     private final BiomeSwapper mBiomes;
+    private BiomeReplacer BoPSubBiomeReplacer;
 
     private IntRandomizer randomCallback = new IntRandomizer() {
 
@@ -39,6 +42,15 @@ public class GenLayerSubBiome extends GenLayerPack {
         this.subBiomeChooser = subBiomeChooser;
         this.mBiomes = mBiomes;
         this.initChunkSeed(0, 0);
+        try {
+            if (doBoP) {
+                BoPSubBiomeReplacer = new BoPSubBiomeReplacer(randomCallback);
+                logger.info("Bop set up");
+            }
+        } catch (java.lang.NoClassDefFoundError e) {
+            BoPSubBiomeReplacer = null;
+            logger.info("no bop ");
+        }
     }
 
     /**
@@ -108,6 +120,16 @@ public class GenLayerSubBiome extends GenLayerPack {
                         } else {
                             aint2[j1 + i1 * par3] = biomeVal;
                         }
+                    }
+                }
+                // now the GenLayerHills stuff is done so run BoP subbiome replacements if it's on
+                if (this.BoPSubBiomeReplacer != null) {
+                    this.initChunkSeed((long) (j1 + par1), (long) (i1 + par2));
+                    int old = aint2[j1 + i1 * par3];
+                    aint2[j1 + i1 * par3] = BoPSubBiomeReplacer
+                        .replacement(aint2[j1 + i1 * par3], randomCallback, j1 + par1, i1 + par2);
+                    if (aint2[j1 + i1 * par3] != old) {
+                        // logger.info("BoP subbiome :"+old + " to "+aint2[j1 + i1 * par3]);
                     }
                 }
             }
