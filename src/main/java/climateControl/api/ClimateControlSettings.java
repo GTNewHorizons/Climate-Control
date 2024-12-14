@@ -279,7 +279,7 @@ public class ClimateControlSettings extends Settings {
         .booleanSetting(interveneInHighlandsName, false, "impose Climate Control generation on Highlands world types");
 
     public final Mutable<Boolean> noBoPSubBiomes = climateControlCategory
-        .booleanSetting(noBoPSubBiomesName, true, "suppress Bop sub-biome generation");
+        .booleanSetting(noBoPSubBiomesName, false, "suppress Bop sub-biome generation");
 
     public final Mutable<Boolean> interveneInBOPWorlds = climateControlCategory.booleanSetting(
         interveneInBOPName,
@@ -295,7 +295,7 @@ public class ClimateControlSettings extends Settings {
         .booleanSetting(forceStartContinentName, true, "force small continent near origin");
 
     public final boolean doBoPSubBiomes() {
-        return noBoPSubBiomes.value() == false;
+        return !noBoPSubBiomes.value();
     }
 
     public final Mutable<String> externalBiomeNames = climateControlCategory.stringSetting(
