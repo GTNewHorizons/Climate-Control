@@ -34,6 +34,7 @@ import climateControl.utils.Named;
 import climateControl.utils.PropertyManager;
 import climateControl.utils.TaggedConfigManager;
 import climateControl.utils.Zeno410Logger;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -72,6 +73,8 @@ public class ClimateControl {
 
     private ExternalBiomePackage externalBiomesPackage;
 
+    public static boolean isBoPLoaded;
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         addonConfigManager = new TaggedConfigManager("climatecontrol.cfg", "ClimateControl");
@@ -91,7 +94,6 @@ public class ClimateControl {
         config.load();
         // if (this.rescueOldCCMode) defaultSettings.set(config);
         // this.settings = defaultSettings.clone();
-
         setupRegistry();
         newSettings.readFrom(config);
 
@@ -110,6 +112,7 @@ public class ClimateControl {
             event.getSuggestedConfigurationFile());
         config.save();
 
+        isBoPLoaded = Loader.isModLoaded("BiomesOPlenty");
     }
 
     @EventHandler
